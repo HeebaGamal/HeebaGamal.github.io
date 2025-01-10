@@ -4,85 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heba Abd El-aal - Game Developer Portfolio</title>
+    <title>Heba Abd El-aal - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* General Styles */
         body {
+            font-family: 'Poppins', sans-serif;
             margin: 0;
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f5f5f5;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #212529;
         }
 
         /* Navbar */
         .navbar {
-            background: #222;
-            color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             padding: 1rem 2rem;
             position: fixed;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .navbar a {
-            color: #fff;
-            padding: 0.5rem 1rem;
-            transition: color 0.3s;
+            text-decoration: none;
+            color: #212529;
+            margin: 0 1rem;
+            font-weight: 500;
         }
 
         .navbar a:hover {
-            color: #00bcd4;
+            color: #007bff;
         }
 
         /* Hero Section */
         .hero {
+            background: #e9ecef;
             text-align: center;
-            background: url('images/hero-bg.jpg') no-repeat center center/cover;
-            color: #fff;
-            padding: 10rem 1rem;
+            padding: 6rem 2rem;
         }
 
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
+            color: #343a40;
         }
 
         .hero p {
             font-size: 1.2rem;
+            color: #495057;
         }
 
-        /* Container */
+        /* Sections */
         .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 2rem auto;
-        }
-
-        /* Section */
-        section {
-            margin: 4rem 0;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 2rem;
             font-size: 2rem;
-            color: #222;
+            color: #343a40;
+            margin-bottom: 2rem;
         }
 
         /* About Section */
         .about {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             gap: 2rem;
         }
@@ -90,11 +82,13 @@
         .about img {
             width: 40%;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .about-text {
-            width: 60%;
+            flex: 1;
+            font-size: 1rem;
+            color: #495057;
         }
 
         /* Projects Section */
@@ -106,51 +100,112 @@
 
         .project-card {
             background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .project-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
         }
 
-        .project-card img {
+        .carousel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel img {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            display: none;
+        }
+
+        .carousel img.active {
+            display: block;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            transform: translateY(-50%);
+        }
+
+        .carousel-controls button {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        .carousel-controls button:hover {
+            background: rgba(0, 0, 0, 0.7);
         }
 
         .project-card h3 {
-            padding: 1rem;
-            font-size: 1.5rem;
-            color: #222;
-        }
-
-        .project-card p {
-            padding: 0 1rem 1rem;
+            margin: 1rem;
+            font-size: 1.2rem;
+            color: #343a40;
         }
 
         /* Contact Section */
         .contact {
             text-align: center;
+            font-size: 1rem;
+            color: #495057;
         }
 
         .contact-info {
-            font-size: 1.2rem;
-            margin: 1rem 0;
+            margin: 0.5rem 0;
         }
 
         /* Footer */
         footer {
-            background: #222;
+            background: #343a40;
             color: #fff;
             text-align: center;
             padding: 1rem;
             margin-top: 2rem;
         }
     </style>
+    <script>
+        // Carousel functionality
+        function initCarousel() {
+            const carousels = document.querySelectorAll('.carousel');
+
+            carousels.forEach(carousel => {
+                const images = carousel.querySelectorAll('img');
+                let currentIndex = 0;
+
+                function showImage(index) {
+                    images.forEach((img, i) => {
+                        img.classList.toggle('active', i === index);
+                    });
+                }
+
+                const prevButton = carousel.querySelector('.prev');
+                const nextButton = carousel.querySelector('.next');
+
+                prevButton.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    showImage(currentIndex);
+                });
+
+                nextButton.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    showImage(currentIndex);
+                });
+
+                showImage(currentIndex);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', initCarousel);
+    </script>
 </head>
 
 <body>
@@ -191,22 +246,31 @@
         <section id="projects">
             <h2 class="section-title">My Projects</h2>
             <div class="projects">
+                <!-- Unity Projects -->
                 <div class="project-card">
-                    <img src="images/ash-castle.jpg" alt="Ash Castle">
+                    <div class="carousel">
+                        <img src="AshCastle/AshCastle1.png" alt="Ash Castle" class="active">
+                        <div class="carousel-controls">
+                            <button class="prev">&lt;</button>
+                            <button class="next">&gt;</button>
+                        </div>
+                    </div>
                     <h3>Ash Castle</h3>
-                    <p>A thrilling castle defense game with immersive mechanics.</p>
                 </div>
+
                 <div class="project-card">
-                    <img src="images/chess.jpg" alt="Chess">
+                    <div class="carousel">
+                        <img src="images/chess1.jpg" alt="Chess" class="active">
+                        <img src="images/chess2.jpg" alt="Chess">
+                        <div class="carousel-controls">
+                            <button class="prev">&lt;</button>
+                            <button class="next">&gt;</button>
+                        </div>
+                    </div>
                     <h3>Chess</h3>
-                    <p>An advanced chess simulator with multiplayer functionality.</p>
                 </div>
-                <div class="project-card">
-                    <img src="images/flappy-bird.jpg" alt="Flappy Bird">
-                    <h3>Flappy Bird</h3>
-                    <p>A classic arcade game reimagined in Unity.</p>
-                </div>
-                <!-- Add more project cards as needed -->
+
+                <!-- Add similar project cards for other games... -->
             </div>
         </section>
 

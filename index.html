@@ -163,6 +163,27 @@
             margin: 0.5rem 0;
         }
 
+        /* Tools Section */
+        .tools {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .tool-card {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .tool-card h3 {
+            font-size: 1.2rem;
+            color: #343a40;
+            margin-bottom: 1rem;
+        }
+
         /* Footer */
         footer {
             background: #343a40;
@@ -172,40 +193,6 @@
             margin-top: 2rem;
         }
     </style>
-    <script>
-        // Carousel functionality
-        function initCarousel() {
-            const carousels = document.querySelectorAll('.carousel');
-
-            carousels.forEach(carousel => {
-                const images = carousel.querySelectorAll('img');
-                let currentIndex = 0;
-
-                function showImage(index) {
-                    images.forEach((img, i) => {
-                        img.classList.toggle('active', i === index);
-                    });
-                }
-
-                const prevButton = carousel.querySelector('.prev');
-                const nextButton = carousel.querySelector('.next');
-
-                prevButton.addEventListener('click', () => {
-                    currentIndex = (currentIndex - 1 + images.length) % images.length;
-                    showImage(currentIndex);
-                });
-
-                nextButton.addEventListener('click', () => {
-                    currentIndex = (currentIndex + 1) % images.length;
-                    showImage(currentIndex);
-                });
-
-                showImage(currentIndex);
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', initCarousel);
-    </script>
 </head>
 
 <body>
@@ -216,6 +203,8 @@
         <div>
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
+            <a href="#tools">Tools</a>
+            <a href="#programming-languages">Programming Languages</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
@@ -231,7 +220,6 @@
         <section id="about">
             <h2 class="section-title">About Me</h2>
             <div class="about">
-                <img src="images/hi.jpeg" alt="Heba AbdEl-aal">
                 <div class="about-text">
                     <p>Hello! I'm Heba AbdEl-aal, a skilled Unity developer with expertise in 2D, 3D, 2.5D, isometric,
                         AR, and VR game development. I also have experience with Hatch VR and SFML framework.</p>
@@ -347,7 +335,6 @@
                 </div>
 
                 <!-- Instructor Projects -->
-                <h3>Instructor Projects</h3>
                 <div class="project-card">
                     <div class="carousel">
                         <img src="retro/1.png" alt="Retro Rumble" class="active">
@@ -494,22 +481,48 @@
             </div>
         </section>
 
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <h2 class="section-title">Contact Me</h2>
-            <div class="contact">
-                <p class="contact-info"><strong>Phone:</strong> 01211665837</p>
-                <p class="contact-info"><strong>Email:</strong> heeba.g.saleh@gmail.com</p>
+        <!-- Tools Section -->
+        <section id="tools">
+            <h2 class="section-title">Tools & Game Engines</h2>
+            <div class="tools">
+                <div class="tool-card">
+                    <h3>Unity</h3>
+                    <p>Expertise in Unity game engine for 2D, 3D, AR, and VR projects.</p>
+                </div>
+                <div class="tool-card">
+                    <h3>Construct3</h3>
+                    <p>A robust browser-based game development platform designed for creating 2D games</p>
+                </div>
+                <div class="tool-card">
+                    <h3>SFML</h3>
+                    <p>Framework used for lightweight game development projects.</p>
+                </div>
+                <div class="tool-card">
+                    <h3>Hatch VR</h3>
+                    <p>Proficient in VR development for immersive experiences.</p>
+                </div>
             </div>
         </section>
-    </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Heba AbdEl-aal. All Rights Reserved.</p>
-    </footer>
-
-</body>
-
-</html>
+        <!-- Programming Languages Section -->
+        <section id="programming-languages">
+            <h2 class="section-title">Programming Languages</h2>
+            <div class="tools">
+                <div class="tool-card">
+                    <h3>C#</h3>
+                    <p>Primary language for scripting in Unity projects.</p>
+                </div>
+                <div class="tool-card">
+                    <h3>C++</h3>
+                    <p>Used for performance-critical game development and Unreal Engine scripting.</p>
+                </div>
+                <div class="tool-card">
+                    <h3>Python</h3>
+                    <p>Used for tools development and scripting automation.</p>
+                </div>
+                <div class="tool-card">
+                    <h3>JavaScript</h3>
+                    <p>Experience with game-related web projects and frameworks.</p>
+                </div>
+            </div>
+        </section>
